@@ -2,7 +2,19 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 
+// eslint-disable-next-line
+import Worker from 'worker-loader!./worker.js';
+
 function App() {
+  let myWorker = new Worker();
+
+  myWorker.postMessage([1,2]);
+
+  myWorker.onmessage = function(e) {
+    console.log('Message received from worker');
+    console.log(e.data);
+  }
+
   return (
     <div className="App">
       <header className="App-header">
