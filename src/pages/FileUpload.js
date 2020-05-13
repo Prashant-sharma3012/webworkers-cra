@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import AppContext from '../AppContext';
+import AppContext from '../AppContext'
 import { makeStyles } from '@material-ui/core/styles'
 
 const useStyles = makeStyles({

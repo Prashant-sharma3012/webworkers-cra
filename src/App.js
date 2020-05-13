@@ -12,6 +12,7 @@ import FileUpload from './pages/FileUpload';
 import Home from './pages/Home'
 import AppContext from './AppContext';
 import Header from './components/Header';
+import FileRecords from './pages/FileRecords';
 
 import { makeStyles } from '@material-ui/core/styles';
 
@@ -76,6 +77,9 @@ function App() {
             </Route>
             <Route path="/upload">
               <FileUpload />
+            </Route>
+            <Route path="/records">
+              <FileRecords />
             </Route>
             <Route path="/">
               <Home />

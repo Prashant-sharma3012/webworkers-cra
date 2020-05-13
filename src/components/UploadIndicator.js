@@ -4,7 +4,7 @@ import { makeStyles } from '@material-ui/core/styles'
 import CircularProgress from '@material-ui/core/CircularProgress';
 import IconButton from '@material-ui/core/IconButton';
 import CheckCircle from '@material-ui/icons/CheckCircle';
-
+import { withRouter } from 'react-router-dom';
 
 const useStyles = makeStyles({
   container: {
@@ -16,12 +16,12 @@ const useStyles = makeStyles({
 });
 
 
-export default function UploadIndicator() {
-  const context = useContext(AppContext);
+function UploadIndicator(props) {
+  const context = useContext(AppContext)
   const classes = useStyles()
 
   const viewFile = () => {
-
+    props.history.push('/records')
   }
 
   return (
@@ -56,3 +56,5 @@ export default function UploadIndicator() {
     </div>
   )
 }
+
+export default withRouter(UploadIndicator)
