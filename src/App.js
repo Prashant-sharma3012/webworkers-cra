@@ -20,7 +20,7 @@ const useStyles = makeStyles({
     display: 'flex',
     flexDirection: 'column',
     height: '100vh',
-    backgroundColor: '#03fcdf'
+    backgroundColor: '#4abdac'
   },
 });
 

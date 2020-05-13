@@ -9,6 +9,8 @@ const useStyles = makeStyles({
     flexDirection: 'row',
     justifyContent: 'space-between',
     padding: '1rem',
+    backgroundColor:'#dfdce3',
+    boxShadow: '8px 8px 6px -6px #606060'
   },
   banner: {},
   menu: {
@@ -21,7 +23,7 @@ const useStyles = makeStyles({
     textDecoration: 'none',
     color: 'black',
     '&:hover':{
-      color: 'white'
+      color: '#F53240'
     }
   },
   linkContainer: {
