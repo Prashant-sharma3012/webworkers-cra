@@ -1,16 +1,20 @@
-import React, {useState} from 'react';
-import logo from './logo.svg';
-import './App.css';
-
+import React, { useState } from 'react';
 // eslint-disable-next-line
 import Worker from 'worker-loader!./worker.js';
+
+const AppContext = React.createContext({});
 
 function App() {
 
   const [workbook, setWorkbook] = useState(null)
   const [rows, setRows] = useState(null)
+  const myWorker = new Worker();
 
-  let myWorker = new Worker();
+  const store = {
+    workbook: { get: workbook, set: setWorkbook },
+    rows: { get: rows, set: setRows },
+    worker: myWorker
+  }
 
   myWorker.onmessage = function (e) {
     switch (e.data.command) {
@@ -25,21 +29,12 @@ function App() {
     }
   }
 
-  const handleFile = (t) => {
-    myWorker.postMessage({ file: t.target.files, command: 'PARSE_EXCEL' });
-  }
-
-  const getRows = () => {
-    myWorker.postMessage({ workbook: workbook, sheetName: Object.keys(workbook.Sheets)[0], command: 'READ_ROWS' });
-  }
-
   return (
-    <div style={{display: 'flex', flexDirection:'row', height: '100vh', justifyContent: 'center'}}>
-      <div style={{display: 'flex', alignItems: 'center'}}>
-        <input type="file" onChange={handleFile} />
-        <button onClick={getRows} disabled={!workbook}>GetRows</button>
+    <AppContext.Provider value={store}>
+      <div style={{ display: 'flex', flexDirection: 'row', height: '100vh', justifyContent: 'center' }}>
+
       </div>
-    </div>
+    </AppContext.Provider>
   );
 }
 
