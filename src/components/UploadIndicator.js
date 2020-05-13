@@ -49,7 +49,7 @@ export default function UploadIndicator() {
       <div>
         {context.uploaded.get &&
           <IconButton style={{padding: '0'}} onClick={viewFile}>
-            <CheckCircle />
+            <CheckCircle style={{ color: '#fc4a1a' }} />
           </IconButton>
         }
       </div>

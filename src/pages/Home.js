@@ -15,7 +15,7 @@ const useStyles = makeStyles({
     flexDirection: 'column'
   },
   note: {
-    fontSize: '1.5rem',
+    fontSize: '1.2rem',
     color: '#fc4a1a',
     fontWeight: 700
   }
