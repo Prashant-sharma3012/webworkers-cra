@@ -26,6 +26,7 @@ const useStyles = makeStyles({
 
 function App() {
 
+  // move this entoire thing into a seperat filecalled store
   const classes = useStyles();
   const [workbook, setWorkbook] = useState(null)
   const [rows, setRows] = useState(null)
@@ -46,8 +47,17 @@ function App() {
     switch (e.data.command) {
       case 'PARSE_EXCEL':
         setWorkbook(e.data.workbook)
+
+        myWorker.postMessage({
+          workbook: e.data.workbook,
+          sheetName: Object.keys(e.data.workbook.Sheets)[0],
+          command: 'READ_ROWS'
+        });
+
         return
       case 'READ_ROWS':
+        setUploading(false)
+        setUploaded(true)
         setRows(e.data.rows)
         return
       default:
